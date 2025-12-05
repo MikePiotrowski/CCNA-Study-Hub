@@ -14,7 +14,7 @@ const CACHE_TTL_SECONDS = Number(process.env.CACHE_TTL_SECONDS || 600);
 const RATE_LIMIT_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS || 60_000);
 const RATE_LIMIT_MAX = Number(process.env.RATE_LIMIT_MAX || 60);
 const ALLOWED_DOMAINS = (process.env.ALLOWED_DOMAINS || '').split(',').map(s => s.trim()).filter(Boolean);
-const PROVIDERS = (process.env.SEARCH_PROVIDER || 'cse,bing').split(',').map(s => s.trim()).filter(Boolean);
+const PROVIDERS = (process.env.SEARCH_PROVIDER || 'wikipedia').split(',').map(s => s.trim()).filter(Boolean);
 
 // CORS
 app.use(cors({ origin: ALLOW_ORIGIN, credentials: false }));
@@ -58,13 +58,47 @@ function filterAllowed(items) {
   return items.filter(i => ALLOWED_DOMAINS.includes(i.domain));
 }
 
-// Providers (stubs for now)
-async function searchCSE(q, limit) { return []; }
-async function searchBing(q, limit) { return []; }
+// Providers
+async function searchWikipedia(q, limit) {
+  try {
+    const params = new URLSearchParams({
+      action: 'query',
+      list: 'search',
+      srsearch: q,
+      srlimit: limit,
+      format: 'json'
+    });
+    const response = await fetch(`https://en.wikipedia.org/w/api.php?${params}`);
+    if (!response.ok) return [];
+    const data = await response.json();
+    return (data.query?.search || []).map(item => ({
+      title: item.title,
+      url: `https://en.wikipedia.org/wiki/${encodeURIComponent(item.title)}`,
+      snippet: item.snippet.replace(/<[^>]+>/g, ''),
+      source: 'wikipedia'
+    }));
+  } catch (e) {
+    console.error('Wikipedia search error:', e.message);
+    return [];
+  }
+}
+
+async function searchCSE(q, limit) { 
+  // Placeholder: requires Google CSE API key in env
+  if (!process.env.CSE_ID || !process.env.GOOGLE_API_KEY) return [];
+  return [];
+}
+
+async function searchBing(q, limit) { 
+  // Placeholder: requires Bing Search API key in env
+  if (!process.env.BING_KEY) return [];
+  return [];
+}
 
 async function runProviders(q, limit, providerList) {
   const tasks = [];
   for (const p of providerList) {
+    if (p === 'wikipedia') tasks.push(searchWikipedia(q, limit).then(r => r.map(x => ({ ...x, source: 'wikipedia' }))));
     if (p === 'cse') tasks.push(searchCSE(q, limit).then(r => r.map(x => ({ ...x, source: 'cse' }))));
     if (p === 'bing') tasks.push(searchBing(q, limit).then(r => r.map(x => ({ ...x, source: 'bing' }))));
   }
@@ -74,7 +108,7 @@ async function runProviders(q, limit, providerList) {
   return merged.slice(0, limit);
 }
 
-// Search endpoint (stubbed providers)
+// Search endpoint
 app.get('/api/search', async (req, res) => {
   const parsed = querySchema.safeParse(req.query);
   if (!parsed.success) {
@@ -88,19 +122,7 @@ app.get('/api/search', async (req, res) => {
   if (cached) return res.json({ query: q, tookMs: 0, results: cached, provider: providerList, cached: true });
 
   const started = Date.now();
-  // For now, providers are stubs; this returns empty or sample data
   let results = await runProviders(q, limit, providerList);
-
-  // Sample placeholder: add Wikipedia hint line if nothing else
-  if (results.length === 0) {
-    results = [{
-      title: `Search online for: ${q}`,
-      url: `https://www.google.com/search?q=${encodeURIComponent(q)}`,
-      snippet: 'Backend providers are not configured yet. This is a placeholder result.',
-      source: 'placeholder',
-      domain: 'google.com'
-    }];
-  }
 
   results = normalize(results);
   results = filterAllowed(results);

@@ -248,6 +248,182 @@ function initBackendToggle() {
     });
 }
 
+/**
+ * Perform a backend search on the Express API
+ * @param {string} query - Search query
+ * @param {number} limit - Max results (default 5)
+ * @returns {Promise<Array>} - Search results
+ */
+async function performBackendSearch(query, limit = 5) {
+    if (!query.trim()) return [];
+    if (!window.__searchApiBase) return [];
+    
+    try {
+        const params = new URLSearchParams({
+            q: query.trim(),
+            limit: Math.min(limit, 10)
+        });
+        const url = `${window.__searchApiBase}/api/search?${params}`;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' },
+            credentials: 'omit'
+        });
+        
+        if (!response.ok) {
+            console.warn(`Backend search failed: ${response.status}`);
+            return [];
+        }
+        
+        const data = await response.json();
+        return Array.isArray(data.results) ? data.results : [];
+    } catch (err) {
+        console.warn('Backend search error:', err.message);
+        return [];
+    }
+}
+
+/**
+ * Show backend search results in a modal or overlay
+ * @param {string} query - Search query
+ * @param {Array} results - Search results
+ */
+function displayBackendSearchResults(query, results) {
+    if (!results || results.length === 0) {
+        try { showToast('No results found', 'info'); } catch {}
+        return;
+    }
+    
+    // Create a simple modal to display results
+    const modal = document.createElement('div');
+    modal.className = 'search-results-modal';
+    modal.innerHTML = `
+        <div class="search-results-overlay">
+            <div class="search-results-container">
+                <div class="search-results-header">
+                    <h3>Search Results for "${query}"</h3>
+                    <button class="close-results" aria-label="Close results">&times;</button>
+                </div>
+                <div class="search-results-list">
+                    ${results.map(r => `
+                        <a href="${r.url || '#'}" target="_blank" rel="noopener" class="search-result-item">
+                            <div class="search-result-title">${r.title || 'Untitled'}</div>
+                            <div class="search-result-snippet">${r.snippet || 'No description available'}</div>
+                            <div class="search-result-source">${r.source || 'unknown'} • ${r.domain || ''}</div>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    const closeBtn = modal.querySelector('.close-results');
+    const overlay = modal.querySelector('.search-results-overlay');
+    
+    const close = () => modal.remove();
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) close();
+    });
+    
+    // Add some basic styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .search-results-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+        .search-results-overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+        }
+        .search-results-container {
+            background: var(--bg-secondary, #fff);
+            border-radius: 12px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border: 1px solid var(--card-border, rgba(255,255,255,0.1));
+        }
+        .search-results-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border, rgba(255,255,255,0.1));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-results-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .close-results {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color, #333);
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-results:hover {
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+        .search-results-list {
+            overflow-y: auto;
+            padding: 0;
+        }
+        .search-result-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--card-border, rgba(255,255,255,0.1));
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+        .search-result-item:hover {
+            background: rgba(100,150,255,0.1);
+        }
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        .search-result-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color, #333);
+        }
+        .search-result-snippet {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary, #666);
+            line-height: 1.4;
+        }
+        .search-result-source {
+            font-size: 0.85rem;
+            color: var(--text-tertiary, #999);
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 function initCurrentDateBadge(){
     try {
         const el = document.getElementById('current-date');
@@ -846,6 +1022,40 @@ function setupNotes() {
             const next = !pressed;
             toggleAllBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
             allCards.forEach(card => togglePreview(card, next));
+        });
+    }
+
+    // Backend search
+    const searchInput = document.getElementById('notes-search-input');
+    const searchBtn = document.getElementById('notes-search-btn');
+    if (searchBtn && searchInput) {
+        const handleSearch = async () => {
+            const query = searchInput.value.trim();
+            if (!query) {
+                try { showToast('Please enter a search query', 'info'); } catch {}
+                return;
+            }
+            
+            if (!window.__useBackendSearch) {
+                try { showToast('Backend search is disabled. Toggle it on in the header.', 'info'); } catch {}
+                return;
+            }
+            
+            searchBtn.disabled = true;
+            searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+            
+            try {
+                const results = await performBackendSearch(query, 5);
+                displayBackendSearchResults(query, results);
+            } finally {
+                searchBtn.disabled = false;
+                searchBtn.innerHTML = '<i class="fas fa-search"></i> Search';
+            }
+        };
+        
+        searchBtn.addEventListener('click', handleSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSearch();
         });
     }
 
