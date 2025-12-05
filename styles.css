@@ -1421,38 +1421,6 @@ body.theme-teal {
     color: var(--text-secondary);
 }
 
-.notes-search-btn {
-    padding: 0.55rem 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    color: var(--text-color);
-    font-weight: 500;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    white-space: nowrap;
-}
-
-.notes-search-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.notes-search-btn:active {
-    transform: translateY(0) scale(0.98);
-}
-
-.notes-search-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .notes-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Fixed 2-column layout on desktop */
