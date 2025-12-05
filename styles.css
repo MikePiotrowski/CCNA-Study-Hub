@@ -1394,24 +1394,27 @@ body.theme-teal {
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .notes-search-input {
-    padding: 0.625rem 1rem;
-    border: 1px solid var(--card-border);
+    padding: 0.55rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
-    background: var(--bg-secondary);
+    background: rgba(255, 255, 255, 0.04);
     color: var(--text-color);
     font-size: 0.95rem;
+    font-weight: 500;
     flex: 1;
     min-width: 150px;
-    transition: border-color 0.2s, background 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .notes-search-input:focus {
     outline: none;
-    border-color: rgba(100, 150, 255, 0.6);
-    background: var(--bg-secondary);
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .notes-search-input::placeholder {
@@ -1419,14 +1422,15 @@ body.theme-teal {
 }
 
 .notes-search-btn {
-    padding: 0.625rem 1rem;
-    background: linear-gradient(135deg, rgba(100, 150, 255, 0.2), rgba(150, 100, 255, 0.2));
-    border: 1px solid rgba(100, 150, 255, 0.3);
+    padding: 0.55rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     color: var(--text-color);
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -1434,13 +1438,19 @@ body.theme-teal {
 }
 
 .notes-search-btn:hover {
-    background: linear-gradient(135deg, rgba(100, 150, 255, 0.3), rgba(150, 100, 255, 0.3));
-    border-color: rgba(100, 150, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .notes-search-btn:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
+}
+
+.notes-search-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .notes-list {
@@ -2642,6 +2652,7 @@ body.theme-teal {
 .toggle-preview,
 .export-data,
 .import-data,
+.notes-search-btn,
 .shortcuts-toggle,
 .theme-toggle,
 .study-actions button,
@@ -2660,6 +2671,7 @@ body.theme-teal {
 .toggle-preview:hover,
 .export-data:hover,
 .import-data:hover,
+.notes-search-btn:hover,
 .shortcuts-toggle:hover,
 .theme-toggle:hover,
 .study-actions button:hover,
@@ -2673,6 +2685,7 @@ body.theme-teal {
 .toggle-preview:active,
 .export-data:active,
 .import-data:active,
+.notes-search-btn:active,
 .shortcuts-toggle:active,
 .theme-toggle:active,
 .study-actions button:active,
