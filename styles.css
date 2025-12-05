@@ -988,8 +988,8 @@ button:active {
 
 /* Header */
 header {
-    padding: 4rem 1rem;
-    margin-bottom: var(--section-gap);
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     color: var(--text-color);
     background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
@@ -1374,7 +1374,6 @@ body.theme-teal {
 
 /* Notes styles */
 .notes {
-    margin-top: 3rem;
     padding: 1rem;
     background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
     border-radius: 10px;
