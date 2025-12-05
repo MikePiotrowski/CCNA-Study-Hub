@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Notes | CCNA Study Hub</title>
+  <meta name="description" content="Create and manage your CCNA study notes with Markdown support and flashcards">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Markdown parser and sanitizer for notes -->
+  <script src="marked.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js" defer></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <nav id="sticky-nav" class="sticky-nav" aria-label="Main navigation">
+    <div class="sticky-nav-inner">
+      <div class="sticky-brand">
+        <a href="home.html" class="sticky-nav-title-link">
+          <div class="sticky-nav-title">CCNA Study Hub</div>
+        </a>
+        <div class="sticky-nav-sub" aria-label="Profile and date">
+          <span class="brand-name">Michael Lee Piotrowski</span>
+          <span class="brand-sep" aria-hidden="true">•</span>
+          <time id="current-date" class="brand-date" datetime=""></time>
+        </div>
+      </div>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="sticky-nav-links" id="mobile-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="study-plan.html">Study Plan</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="wendell-odom.html">Wendell Odom</a></li>
+        <li><a href="notes.html" class="nav-active">Notes</a></li>
+      </ul>
+      <div class="sticky-nav-tools">
+        <button id="flashcards-toggle" class="flashcards-toggle" aria-expanded="false" title="Show flashcards">Flashcards</button>
+        <button id="pomodoro-toggle" class="pomodoro-toggle" aria-pressed="false" title="Pomodoro timer">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <span id="pomodoro-display" class="pomodoro-display">25:00</span>
+        </button>
+        <button id="backend-toggle" class="flashcards-toggle" aria-pressed="true" title="Toggle backend search">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span id="backend-toggle-label">Backend: On</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Header / Hero -->
+    <header role="banner">
+      <h1><a href="home.html" class="header-title-link">CCNA Study Hub</a></h1>
+      <p class="tagline">Networking fundamentals, resources, and progress tracking for Cisco's CCNA exam.</p>
+    </header>
+
+    <!-- Notes/Journal -->
+    <section id="notes" class="notes" aria-labelledby="notes-title">
+      <div class="notes-header">
+        <h2 id="notes-title">Study Notes</h2>
+        <div class="notes-actions">
+          <button type="button" id="add-note" class="add-note">Add Note</button>
+          <button type="button" id="toggle-preview" class="toggle-preview" aria-pressed="false">Preview Mode</button>
+          <button type="button" id="export-data" class="export-data">Export</button>
+          <button type="button" id="import-data" class="import-data">Import</button>
+          <input type="file" id="import-file" accept="application/json" hidden>
+        </div>
+      </div>
+
+      <div id="notes-list" class="notes-list" role="list">
+        <!-- Notes will be inserted here -->
+      </div>
+      
+      <!-- Empty state for notes -->
+      <div id="notes-empty-state" class="empty-state empty-state-enhanced" hidden>
+        <div class="empty-state-icon-wrapper">
+          <i class="fas fa-file-alt empty-state-icon"></i>
+        </div>
+        <h3>Start Documenting Your Learning</h3>
+        <p class="empty-state-description">Take notes with full Markdown support, organize your study materials, and create flashcards by tagging notes with #flashcard. Your notes are automatically saved as you type.</p>
+        <div class="empty-state-actions">
+          <button id="empty-add-note" class="btn-primary-large">
+            <i class="fas fa-plus"></i> Create Your First Note
+          </button>
+          <p class="empty-state-hint">Tip: Use **bold** and _italic_ for formatting</p>
+        </div>
+        <div class="empty-state-features">
+          <div class="feature-item">
+            <i class="fab fa-markdown"></i>
+            <span>Markdown support</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-save"></i>
+            <span>Auto-save</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-layer-group"></i>
+            <span>Flashcards</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-eye"></i>
+            <span>Live preview</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Note Editor Template -->
+      <template id="note-template">
+        <article class="note-card" role="article">
+          <div class="note-header">
+            <input type="text" class="note-title" placeholder="Note title..." aria-label="Note title">
+            <div class="note-toolbar">
+              <button type="button" class="format-bold" aria-label="Bold" title="Bold (Ctrl+B)"><i class="fas fa-bold"></i></button>
+              <button type="button" class="format-italic" aria-label="Italic" title="Italic (Ctrl+I)"><i class="fas fa-italic"></i></button>
+              <button type="button" class="format-code" aria-label="Code" title="Code (Ctrl+K)"><i class="fas fa-code"></i></button>
+              <button type="button" class="format-link" aria-label="Link" title="Link (Ctrl+L)"><i class="fas fa-link"></i></button>
+              <button type="button" class="note-menu" aria-label="More options"><i class="fas fa-ellipsis-v"></i></button>
+            </div>
+          </div>
+          <textarea class="note-content" placeholder="Write your notes here... (Supports Markdown)" aria-label="Note content" rows="8"></textarea>
+          <div class="note-preview markdown-body" hidden></div>
+          <div class="note-status" aria-live="polite" aria-atomic="true"></div>
+          <div class="note-footer">
+            <span class="note-date"></span>
+            <div class="note-actions">
+              <button type="button" class="toggle-preview" aria-pressed="false">Preview</button>
+              <button type="button" class="delete-note">Delete</button>
+            </div>
+          </div>
+        </article>
+      </template>
+    </section>
+
+  </div>
+
+  <!-- Footer outside container for full-width -->
+  <footer>
+    <div class="footer-inner">
+      <nav class="socials" aria-label="Social media">
+        <ul class="social-links">
+          <li>
+            <a class="social-link" href="https://linkedin.com/in/your-username" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn" data-label="LinkedIn" title="LinkedIn">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://github.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="GitHub" data-label="GitHub" title="GitHub">
+              <i aria-hidden="true" class="fa-brands fa-github social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://instagram.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Instagram" data-label="Instagram" title="Instagram">
+              <i aria-hidden="true" class="fa-brands fa-instagram social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://youtube.com/@your-username" target="_blank" rel="me noopener noreferrer" aria-label="YouTube" data-label="YouTube" title="YouTube">
+              <i aria-hidden="true" class="fa-brands fa-youtube social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://facebook.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Facebook" data-label="Facebook" title="Facebook">
+              <i aria-hidden="true" class="fa-brands fa-facebook-f social-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">
+        &copy; <span id="footer-year" class="copyright-year">2025</span> Michael Lee Piotrowski. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Flashcards Sidebar -->
+  <aside id="flashcards-sidebar" class="flashcards-sidebar" hidden aria-label="Flashcards from notes">
+    <div class="flashcards-header">
+      <h3>Flashcards</h3>
+      <button type="button" id="flashcards-close" class="flashcards-close" aria-label="Close flashcards">×</button>
+    </div>
+    <div id="flashcards-content" class="flashcards-content">
+      <p class="muted">Tag notes with <code>#flashcard</code> to see them here.</p>
+    </div>
+  </aside>
+
+  <!-- Toast notification container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

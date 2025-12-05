@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home — Michael Lee Piotrowski CCNA Study Hub</title>
+  <meta name="description" content="Personal CCNA study hub: topics, notes, progress tracker and curated resources to help you prepare for the CCNA exam.">
+  <meta name="author" content="Michael Lee Piotrowski">
+  <meta name="theme-color" content="#07182a">
+
+  <!-- Favicon and touch icon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/icon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="icons/icon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Sticky Navigation Bar -->
+  <nav id="sticky-nav" class="sticky-nav" aria-label="Page navigation">
+    <div class="sticky-nav-inner">
+      <div class="sticky-brand">
+        <a href="home.html" class="sticky-nav-title-link">
+          <div class="sticky-nav-title">CCNA Study Hub</div>
+        </a>
+        <div class="sticky-nav-sub" aria-label="Profile and date">
+          <span class="brand-name brand-gold">Michael Lee Piotrowski</span>
+          <span class="brand-sep" aria-hidden="true">•</span>
+          <time id="current-date" class="brand-date" datetime=""></time>
+        </div>
+      </div>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="sticky-nav-links" id="mobile-menu">
+        <li><a href="home.html" class="nav-active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="study-plan.html">Study Plan</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="wendell-odom.html">Wendell Odom</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+      <div class="sticky-nav-tools">
+        <button id="flashcards-toggle" class="flashcards-toggle" aria-expanded="false" title="Show flashcards">Flashcards</button>
+        <button id="pomodoro-toggle" class="pomodoro-toggle" aria-pressed="false" title="Pomodoro timer">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <span id="pomodoro-display" class="pomodoro-display">25:00</span>
+        </button>
+        <button id="backend-toggle" class="flashcards-toggle" aria-pressed="true" title="Toggle backend search">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span id="backend-toggle-label">Backend: On</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-meta">
+          <h1 class="gold-text">Michael Lee Piotrowski</h1>
+          <p class="tagline">My journey studying for Cisco's CCNA</p>
+        </div>
+        <div class="hero-actions">
+          <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Toggle theme">Switch theme</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Welcome Section -->
+      <section class="home-welcome">
+        <h2>Welcome to My CCNA Study Hub</h2>
+        <p class="lead">This is my personal command center for conquering the Cisco Certified Network Associate (CCNA) certification. Here you'll find my progress, notes, curated resources, and study tools—all in one place.</p>
+      </section>
+
+      <!-- Quick Stats Dashboard -->
+      <section class="home-stats">
+        <h3>Quick Overview</h3>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="home-topics-total">8</div>
+              <div class="stat-label">Study Topics</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="home-topics-mastered">0</div>
+              <div class="stat-label">Topics Mastered</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-sticky-note"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="home-notes-count">0</div>
+              <div class="stat-label">Study Notes</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="home-hours-remaining">0h</div>
+              <div class="stat-label">Hours Remaining</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Navigation Cards -->
+      <section class="home-navigation">
+        <h3>Explore</h3>
+        <div class="home-nav-grid">
+          <a href="about.html" class="home-nav-card">
+            <div class="home-nav-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <h4>About My Journey</h4>
+            <p>Learn about my CCNA study path and what drives me to achieve this certification.</p>
+          </a>
+
+          <a href="study-plan.html" class="home-nav-card">
+            <div class="home-nav-icon">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h4>Study Plan</h4>
+            <p>Interactive study tracker with topics, progress, estimated hours, and resources.</p>
+          </a>
+
+          <a href="resources.html" class="home-nav-card">
+            <div class="home-nav-icon">
+              <i class="fas fa-link"></i>
+            </div>
+            <h4>CCNA Resources</h4>
+            <p>Curated links to official Cisco docs, labs, simulators, and practice exams.</p>
+          </a>
+
+          <a href="wendell-odom.html" class="home-nav-card">
+            <div class="home-nav-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4>Wendell Odom Resources</h4>
+            <p>Expert CCNA content from the author of the Official Cert Guide series.</p>
+          </a>
+
+          <a href="notes.html" class="home-nav-card">
+            <div class="home-nav-icon">
+              <i class="fas fa-pen"></i>
+            </div>
+            <h4>Study Notes</h4>
+            <p>My personal notes with Markdown support, flashcards, and searchable content.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Motivational Progress Section -->
+      <section class="home-motivation">
+        <div class="motivation-card">
+          <i class="fas fa-rocket motivation-icon"></i>
+          <div class="motivation-content">
+            <h3 id="motivation-title">Keep Going!</h3>
+            <p id="motivation-message">Track your progress and stay motivated on your CCNA journey.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Activity -->
+      <section class="home-activity">
+        <h3>Recent Activity</h3>
+        <div id="recent-activity-list" class="activity-list">
+          <!-- Populated by JavaScript -->
+        </div>
+        <div id="recent-activity-empty" class="activity-empty" hidden>
+          <i class="fas fa-inbox"></i>
+          <p>No recent activity yet. Start studying to see your progress here!</p>
+        </div>
+      </section>
+
+      <!-- Getting Started Tips -->
+      <section class="home-tips">
+        <h3>Getting Started</h3>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <i class="fas fa-clipboard-list"></i>
+            <h4>Set Up Your Study Plan</h4>
+            <p>Track topics, set time estimates, and organize resources.</p>
+          </div>
+          <div class="tip-card">
+            <i class="fas fa-pen"></i>
+            <h4>Take Notes</h4>
+            <p>Capture key concepts with Markdown formatting and flashcards.</p>
+          </div>
+          <div class="tip-card">
+            <i class="fas fa-fire"></i>
+            <h4>Build a Streak</h4>
+            <p>Study daily to maintain your streak and hit milestones.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  
+  <!-- Footer outside container for full-width -->
+  <footer>
+    <div class="footer-inner">
+      <nav class="socials" aria-label="Social media">
+        <ul class="social-links">
+          <li>
+            <a class="social-link" href="https://linkedin.com/in/your-username" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn" data-label="LinkedIn" title="LinkedIn">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://github.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="GitHub" data-label="GitHub" title="GitHub">
+              <i aria-hidden="true" class="fa-brands fa-github social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://instagram.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Instagram" data-label="Instagram" title="Instagram">
+              <i aria-hidden="true" class="fa-brands fa-instagram social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://youtube.com/@your-username" target="_blank" rel="me noopener noreferrer" aria-label="YouTube" data-label="YouTube" title="YouTube">
+              <i aria-hidden="true" class="fa-brands fa-youtube social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://facebook.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Facebook" data-label="Facebook" title="Facebook">
+              <i aria-hidden="true" class="fa-brands fa-facebook-f social-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">
+        &copy; <span id="footer-year" class="copyright-year">2025</span> Michael Lee Piotrowski. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Toast notification container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

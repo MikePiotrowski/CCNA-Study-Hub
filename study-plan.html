@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Plan | CCNA Study Hub</title>
+  <meta name="description" content="Track your CCNA study progress with topics, status tracking, and time estimates">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <nav id="sticky-nav" class="sticky-nav" aria-label="Main navigation">
+    <div class="sticky-nav-inner">
+      <div class="sticky-brand">
+        <a href="home.html" class="sticky-nav-title-link">
+          <div class="sticky-nav-title">CCNA Study Hub</div>
+        </a>
+        <div class="sticky-nav-sub" aria-label="Profile and date">
+          <span class="brand-name">Michael Lee Piotrowski</span>
+          <span class="brand-sep" aria-hidden="true">•</span>
+          <time id="current-date" class="brand-date" datetime=""></time>
+        </div>
+      </div>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="sticky-nav-links" id="mobile-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="study-plan.html" class="nav-active">Study Plan</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="wendell-odom.html">Wendell Odom</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+      <div class="sticky-nav-tools">
+        <button id="flashcards-toggle" class="flashcards-toggle" aria-expanded="false" title="Show flashcards">Flashcards</button>
+        <button id="pomodoro-toggle" class="pomodoro-toggle" aria-pressed="false" title="Pomodoro timer">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <span id="pomodoro-display" class="pomodoro-display">25:00</span>
+        </button>
+        <button id="backend-toggle" class="flashcards-toggle" aria-pressed="true" title="Toggle backend search">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span id="backend-toggle-label">Backend: On</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Header / Hero -->
+    <header role="banner">
+      <h1><a href="home.html" class="header-title-link">CCNA Study Hub</a></h1>
+      <p class="tagline">Networking fundamentals, resources, and progress tracking for Cisco's CCNA exam.</p>
+    </header>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div id="shortcuts-modal" class="shortcuts-modal" role="dialog" aria-labelledby="shortcuts-title" aria-modal="true" hidden>
+      <div class="shortcuts-content">
+        <h3 id="shortcuts-title">Keyboard Shortcuts</h3>
+        <div class="shortcuts-grid">
+          <div class="shortcut">
+            <kbd>/</kbd>
+            <span>Focus search</span>
+          </div>
+          <div class="shortcut">
+            <kbd>?</kbd>
+            <span>Show shortcuts</span>
+          </div>
+          <div class="shortcut">
+            <kbd>Esc</kbd>
+            <span>Close panels</span>
+          </div>
+          <div class="shortcut">
+            <kbd>↑</kbd><kbd>↓</kbd>
+            <span>Navigate topics</span>
+          </div>
+          <div class="shortcut">
+            <kbd>Space</kbd>
+            <span>Toggle topic</span>
+          </div>
+          <div class="shortcut">
+            <kbd>Enter</kbd>
+            <span>Open resources</span>
+          </div>
+        </div>
+        <button type="button" class="close-modal" aria-label="Close shortcuts help">×</button>
+      </div>
+    </div>
+
+    <!-- Search and Shortcuts - positioned above study content -->
+    <div class="search-wrapper">
+      <div class="search-box">
+        <input type="search" id="search-input" 
+               placeholder="Search topics and notes... (Press / to focus)"
+               aria-label="Search topics and notes" />
+        <kbd class="shortcut-hint">/</kbd>
+      </div>
+      <button type="button" id="shortcuts-toggle" class="shortcuts-toggle" aria-label="Show keyboard shortcuts">
+        <kbd>?</kbd>
+      </button>
+    </div>
+
+    <!-- Study Plan / Tracker -->
+    <section id="study-plan" class="study-plan" aria-labelledby="study-plan-title" role="region">
+      <div class="study-header">
+        <h2 id="study-plan-title">Study Plan</h2>
+        <div class="progress-summary">
+          <span id="progress-text">0 / 0</span>
+          <div class="progress-bar" role="progressbar" aria-label="Study progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="progress-meter" class="progress-meter" aria-hidden="true"></div>
+          </div>
+          <span id="total-hours-remaining" class="total-hours-remaining" aria-live="polite">Remaining: 0h</span>
+        </div>
+      </div>
+
+      <!-- Study Stats Dashboard -->
+      <div class="study-stats-dashboard">
+        <div class="stat-card-mini">
+          <i class="fas fa-fire stat-icon-fire"></i>
+          <div class="stat-mini-content">
+            <div class="stat-mini-number" id="study-streak">0</div>
+            <div class="stat-mini-label">Day Streak</div>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <i class="fas fa-trophy stat-icon-trophy"></i>
+          <div class="stat-mini-content">
+            <div class="stat-mini-number" id="topics-completed">0</div>
+            <div class="stat-mini-label">Completed</div>
+          </div>
+        </div>
+        <div class="stat-card-mini">
+          <i class="fas fa-clock stat-icon-clock"></i>
+          <div class="stat-mini-content">
+            <div class="stat-mini-number" id="total-study-hours">0h</div>
+            <div class="stat-mini-label">Total Hours</div>
+          </div>
+        </div>
+      </div>
+
+      <form id="add-topic-form" class="add-topic-form" aria-label="Add topic">
+        <input id="new-topic" type="text" placeholder="Add a topic (e.g., IPv4 addressing)" aria-label="New topic name" required />
+        <button type="submit" class="btn-primary">Add</button>
+      </form>
+
+      <ul id="topics-list" class="topics-list" aria-live="polite" role="list"></ul>
+      
+      <!-- Empty state for topics -->
+      <div id="topics-empty-state" class="empty-state empty-state-enhanced" hidden>
+        <div class="empty-state-icon-wrapper">
+          <i class="fas fa-clipboard-list empty-state-icon"></i>
+        </div>
+        <h3>Ready to Start Your CCNA Journey?</h3>
+        <p class="empty-state-description">Track your study progress with topics, time estimates, and status updates. Get started by loading the default CCNA topics or add your own custom topics.</p>
+        <div class="empty-state-actions">
+          <button id="empty-reset-topics" class="btn-primary-large">
+            <i class="fas fa-download"></i> Load Default Topics
+          </button>
+          <p class="empty-state-hint">Or type a topic name above and click "Add"</p>
+        </div>
+        <div class="empty-state-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Track completion status</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-clock"></i>
+            <span>Estimate study hours</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-link"></i>
+            <span>Attach resources</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="study-actions">
+        <button id="reset-topics" class="btn-secondary">Reset to defaults</button>
+        <button id="clear-topics" class="btn-secondary">Clear all</button>
+      </div>
+      
+    </section>
+
+  </div>
+
+  <!-- Footer outside container for full-width -->
+  <footer>
+    <div class="footer-inner">
+      <nav class="socials" aria-label="Social media">
+        <ul class="social-links">
+          <li>
+            <a class="social-link" href="https://linkedin.com/in/your-username" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn" data-label="LinkedIn" title="LinkedIn">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://github.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="GitHub" data-label="GitHub" title="GitHub">
+              <i aria-hidden="true" class="fa-brands fa-github social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://instagram.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Instagram" data-label="Instagram" title="Instagram">
+              <i aria-hidden="true" class="fa-brands fa-instagram social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://youtube.com/@your-username" target="_blank" rel="me noopener noreferrer" aria-label="YouTube" data-label="YouTube" title="YouTube">
+              <i aria-hidden="true" class="fa-brands fa-youtube social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://facebook.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Facebook" data-label="Facebook" title="Facebook">
+              <i aria-hidden="true" class="fa-brands fa-facebook-f social-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">
+        &copy; <span id="footer-year" class="copyright-year">2025</span> Michael Lee Piotrowski. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Resource Modal -->
+  <div id="resource-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="resource-modal-title" hidden>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="resource-modal-title">Add Resource</h3>
+        <button type="button" class="modal-close" aria-label="Close">×</button>
+      </div>
+      <form id="resource-modal-form" class="modal-body">
+        <input type="hidden" id="resource-topic-id" />
+        <div class="form-group">
+          <label for="resource-modal-title-input">Resource title</label>
+          <input type="text" id="resource-modal-title-input" name="title" required placeholder="e.g., IPv4 Subnetting Guide" />
+        </div>
+        <div class="form-group">
+          <label for="resource-modal-url-input">URL</label>
+          <input type="url" id="resource-modal-url-input" name="url" required placeholder="https://..." />
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Add</button>
+          <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Flashcards Sidebar -->
+  <aside id="flashcards-sidebar" class="flashcards-sidebar" hidden aria-label="Flashcards from notes">
+    <div class="flashcards-header">
+      <h3>Flashcards</h3>
+      <button type="button" id="flashcards-close" class="flashcards-close" aria-label="Close flashcards">×</button>
+    </div>
+    <div id="flashcards-content" class="flashcards-content">
+      <p class="muted">Tag notes with <code>#flashcard</code> to see them here.</p>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | CCNA Study Hub</title>
+  <meta name="description" content="Learn about my CCNA certification journey and study progress">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <nav id="sticky-nav" class="sticky-nav" aria-label="Main navigation">
+    <div class="sticky-nav-inner">
+      <div class="sticky-brand">
+        <a href="home.html" class="sticky-nav-title-link">
+          <div class="sticky-nav-title">CCNA Study Hub</div>
+        </a>
+        <div class="sticky-nav-sub" aria-label="Profile and date">
+          <span class="brand-name brand-gold">Michael Lee Piotrowski</span>
+          <span class="brand-sep" aria-hidden="true">•</span>
+          <time id="current-date" class="brand-date" datetime=""></time>
+        </div>
+      </div>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="sticky-nav-links" id="mobile-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html" class="nav-active">About</a></li>
+        <li><a href="study-plan.html">Study Plan</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="wendell-odom.html">Wendell Odom</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+      <div class="sticky-nav-tools">
+        <button id="flashcards-toggle" class="flashcards-toggle" aria-expanded="false" title="Show flashcards">Flashcards</button>
+        <button id="pomodoro-toggle" class="pomodoro-toggle" aria-pressed="false" title="Pomodoro timer">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <span id="pomodoro-display" class="pomodoro-display">25:00</span>
+        </button>
+        <button id="backend-toggle" class="flashcards-toggle" aria-pressed="true" title="Toggle backend search">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span id="backend-toggle-label">Backend: On</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Header / Hero -->
+    <header role="banner">
+      <h1><a href="home.html" class="header-title-link">CCNA Study Hub</a></h1>
+      <p class="tagline">Networking fundamentals, resources, and progress tracking for Cisco's CCNA exam.</p>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about about-enhanced" aria-labelledby="about-title">
+      
+      <!-- Hero Section -->
+      <div class="about-hero">
+        <h2 id="about-title">About My CCNA Journey</h2>
+        <p class="about-lead">Documenting my path to Cisco Certified Network Associate certification, one subnet at a time.</p>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="about-content-grid">
+        
+        <!-- Left Column: Story & Goals -->
+        <div class="about-main">
+          
+          <div class="about-section">
+            <h3><i class="fas fa-user-circle"></i> Background</h3>
+            <p>I'm Michael Lee Piotrowski, an aspiring network engineer passionate about understanding how the internet works at a fundamental level. My journey into networking began with curiosity about how data travels across the world in milliseconds, and that curiosity has grown into a dedicated pursuit of the CCNA certification.</p>
+            <p>After exploring various IT domains, I found my calling in networking—the backbone of modern technology. The CCNA represents not just a certification, but a comprehensive understanding of network fundamentals that power everything from small home networks to global enterprise infrastructures.</p>
+          </div>
+
+          <div class="about-section">
+            <h3><i class="fas fa-bullseye"></i> Study Goals</h3>
+            <ul class="goals-list">
+              <li><strong>Master Core Concepts:</strong> Deep understanding of routing, switching, IP addressing, and network security</li>
+              <li><strong>Hands-On Practice:</strong> Build confidence through Packet Tracer labs and real hardware configuration</li>
+              <li><strong>Pass CCNA 200-301:</strong> Target certification date: <strong>Summer 2025</strong></li>
+              <li><strong>Career Transition:</strong> Land a network engineering role in a growing tech organization</li>
+            </ul>
+          </div>
+
+          <div class="about-section">
+            <h3><i class="fas fa-route"></i> Study Timeline</h3>
+            <div class="timeline">
+              <div class="timeline-item completed">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h4>Phase 1: Foundation</h4>
+                  <p class="timeline-date">November 2024 - January 2025</p>
+                  <p>Completed OSI model, IP fundamentals, basic Cisco CLI commands, and subnetting fundamentals.</p>
+                </div>
+              </div>
+              <div class="timeline-item active">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h4>Phase 2: Core Technologies</h4>
+                  <p class="timeline-date">January 2025 - April 2025</p>
+                  <p>Currently working through: VLANs, routing protocols (OSPF, EIGRP), switching concepts, and network security basics.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h4>Phase 3: Advanced Topics</h4>
+                  <p class="timeline-date">April 2025 - June 2025</p>
+                  <p>Planned: Automation basics, wireless networking, cloud integration, and comprehensive lab scenarios.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h4>Phase 4: Exam Preparation</h4>
+                  <p class="timeline-date">June 2025 - August 2025</p>
+                  <p>Final review, practice exams, weak area reinforcement, and exam scheduling.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Photo & Quick Facts -->
+        <aside class="about-sidebar">
+          
+          <figure class="photo-card-enhanced">
+            <img src="20250611_154228.jpg" alt="Michael Lee Piotrowski studying for Cisco's CCNA" loading="lazy" decoding="async">
+            <figcaption>My study setup—where the magic happens</figcaption>
+          </figure>
+
+          <div class="quick-facts-card">
+            <h3><i class="fas fa-info-circle"></i> Quick Facts</h3>
+            <dl class="facts-list">
+              <dt><i class="fas fa-graduation-cap"></i> Current Focus</dt>
+              <dd>CCNA 200-301 Certification</dd>
+              
+              <dt><i class="fas fa-book"></i> Primary Resource</dt>
+              <dd>Wendell Odom's Official Cert Guide</dd>
+              
+              <dt><i class="fas fa-flask"></i> Lab Environment</dt>
+              <dd>Cisco Packet Tracer + GNS3</dd>
+              
+              <dt><i class="fas fa-clock"></i> Study Schedule</dt>
+              <dd>15-20 hours per week</dd>
+              
+              <dt><i class="fas fa-code"></i> Skills Building</dt>
+              <dd>Python automation & network scripting</dd>
+            </dl>
+          </div>
+
+          <div class="motivation-card">
+            <h3><i class="fas fa-heart"></i> Why Networking?</h3>
+            <blockquote>
+              "Networking is the invisible infrastructure that connects the world. Every click, every stream, every message—it all flows through networks. Understanding this layer of technology means understanding how the modern world operates."
+            </blockquote>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- Footer outside container for full-width -->
+  <footer>
+    <div class="footer-inner">
+      <nav class="socials" aria-label="Social media">
+        <ul class="social-links">
+          <li>
+            <a class="social-link" href="https://linkedin.com/in/your-username" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn" data-label="LinkedIn" title="LinkedIn">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://github.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="GitHub" data-label="GitHub" title="GitHub">
+              <i aria-hidden="true" class="fa-brands fa-github social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://instagram.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Instagram" data-label="Instagram" title="Instagram">
+              <i aria-hidden="true" class="fa-brands fa-instagram social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://youtube.com/@your-username" target="_blank" rel="me noopener noreferrer" aria-label="YouTube" data-label="YouTube" title="YouTube">
+              <i aria-hidden="true" class="fa-brands fa-youtube social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://facebook.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Facebook" data-label="Facebook" title="Facebook">
+              <i aria-hidden="true" class="fa-brands fa-facebook-f social-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">
+        &copy; <span id="footer-year" class="copyright-year">2025</span> Michael Lee Piotrowski. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Flashcards Sidebar -->
+  <aside id="flashcards-sidebar" class="flashcards-sidebar" hidden aria-label="Flashcards from notes">
+    <div class="flashcards-header">
+      <h3>Flashcards</h3>
+      <button type="button" id="flashcards-close" class="flashcards-close" aria-label="Close flashcards">×</button>
+    </div>
+    <div id="flashcards-content" class="flashcards-content">
+      <p class="muted">Tag notes with <code>#flashcard</code> to see them here.</p>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

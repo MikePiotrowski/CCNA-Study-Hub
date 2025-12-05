@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources | CCNA Study Hub</title>
+  <meta name="description" content="Curated CCNA study resources including official Cisco docs, labs, and practice tests">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <nav id="sticky-nav" class="sticky-nav" aria-label="Main navigation">
+    <div class="sticky-nav-inner">
+      <div class="sticky-brand">
+        <a href="home.html" class="sticky-nav-title-link">
+          <div class="sticky-nav-title">CCNA Study Hub</div>
+        </a>
+        <div class="sticky-nav-sub" aria-label="Profile and date">
+          <span class="brand-name">Michael Lee Piotrowski</span>
+          <span class="brand-sep" aria-hidden="true">•</span>
+          <time id="current-date" class="brand-date" datetime=""></time>
+        </div>
+      </div>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="sticky-nav-links" id="mobile-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="study-plan.html">Study Plan</a></li>
+        <li><a href="resources.html" class="nav-active">Resources</a></li>
+        <li><a href="wendell-odom.html">Wendell Odom</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+      <div class="sticky-nav-tools">
+        <button id="flashcards-toggle" class="flashcards-toggle" aria-expanded="false" title="Show flashcards">Flashcards</button>
+        <button id="pomodoro-toggle" class="pomodoro-toggle" aria-pressed="false" title="Pomodoro timer">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <span id="pomodoro-display" class="pomodoro-display">25:00</span>
+        </button>
+        <button id="backend-toggle" class="flashcards-toggle" aria-pressed="true" title="Toggle backend search">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span id="backend-toggle-label">Backend: On</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Header / Hero -->
+    <header role="banner">
+      <h1><a href="home.html" class="header-title-link">CCNA Study Hub</a></h1>
+      <p class="tagline">Networking fundamentals, resources, and progress tracking for Cisco's CCNA exam.</p>
+    </header>
+
+    <!-- Resources -->
+    <section id="resources" class="resources resources-enhanced" aria-labelledby="resources-title">
+      <h2 id="resources-title">Essential CCNA Resources</h2>
+      <p class="section-intro">Curated collection of official documentation, hands-on labs, practice tests, and study materials to help you ace the CCNA exam.</p>
+
+      <div class="resource-cards-grid">
+        <!-- Official Cisco Card -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <div class="resource-card-icon cisco-logo-icon" aria-label="Cisco logo">
+              <!-- Original custom Cisco SVG icon -->
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g>
+                  <rect x="20" y="10" width="2" height="18" rx="1" fill="#1BA0E2"/>
+                  <rect x="26" y="10" width="2" height="18" rx="1" fill="#1BA0E2"/>
+                  <rect x="14" y="14" width="2" height="14" rx="1" fill="#1BA0E2"/>
+                  <rect x="32" y="14" width="2" height="14" rx="1" fill="#1BA0E2"/>
+                  <rect x="8" y="18" width="2" height="10" rx="1" fill="#1BA0E2"/>
+                  <rect x="38" y="18" width="2" height="10" rx="1" fill="#1BA0E2"/>
+                  <ellipse cx="24" cy="36" rx="12" ry="6" fill="#1BA0E2" fill-opacity="0.18"/>
+                </g>
+              </svg>
+            </div>
+            <h3>Official Cisco</h3>
+          </div>
+          <p class="resource-card-description">Start with the source. Official Cisco resources, exam details, and the Learning Network community.</p>
+          <div class="resource-links">
+            <a href="https://www.cisco.com/" target="_blank" rel="noopener noreferrer" class="resource-link">
+              <i class="fas fa-globe"></i>
+              <span>Cisco Official Website</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://learningnetwork.cisco.com/s/ccna" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-users"></i>
+              <span>Learning Network - CCNA</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://www.cisco.com/c/en/us/training-events/training-certifications/exams/current-list/200-301-ccna.html" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-file-alt"></i>
+              <span>CCNA Exam (200-301) Details</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Documentation Card -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <div class="resource-card-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Documentation & Guides</h3>
+          </div>
+          <p class="resource-card-description">Comprehensive technical documentation, networking guides, and developer resources from Cisco.</p>
+          <div class="resource-links">
+            <a href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-network-wired"></i>
+              <span>Cisco Solutions & Guides</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://developer.cisco.com/docs/" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-code"></i>
+              <span>Cisco DevNet Documentation</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://learningnetwork.cisco.com/s/article/ccna-topics" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-list-ul"></i>
+              <span>CCNA Exam Topics Breakdown</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Labs Card -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <div class="resource-card-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3>Labs & Simulators</h3>
+          </div>
+          <p class="resource-card-description">Practice makes perfect. Get hands-on experience with network simulation and lab environments.</p>
+          <div class="resource-links">
+            <a href="https://www.packettracer.io/" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-project-diagram"></i>
+              <span>Cisco Packet Tracer</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://www.gns3.com/" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-server"></i>
+              <span>GNS3 Network Simulator</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://try.ipv6now.com/" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-cloud"></i>
+              <span>Online Lab Sandboxes</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Practice & Learning Card -->
+        <div class="resource-card">
+          <div class="resource-card-header">
+            <div class="resource-card-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Practice Exams & Courses</h3>
+          </div>
+          <p class="resource-card-description">Test your knowledge with practice exams, video courses, and comprehensive study guides.</p>
+          <div class="resource-links">
+            <a href="https://www.udemy.com/topic/ccna/" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-video"></i>
+              <span>Udemy CCNA Courses</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://www.amazon.com/s?k=ccna+200-301" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-book-open"></i>
+              <span>CCNA Study Books</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+            <a href="https://www.examcollection.com/" target="_blank" rel="noopener" class="resource-link">
+              <i class="fas fa-clipboard-check"></i>
+              <span>Practice Questions & Exams</span>
+              <i class="fas fa-external-link-alt link-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer outside container for full-width -->
+  <footer>
+    <div class="footer-inner">
+      <nav class="socials" aria-label="Social media">
+        <ul class="social-links">
+          <li>
+            <a class="social-link" href="https://linkedin.com/in/your-username" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn" data-label="LinkedIn" title="LinkedIn">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://github.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="GitHub" data-label="GitHub" title="GitHub">
+              <i aria-hidden="true" class="fa-brands fa-github social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://instagram.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Instagram" data-label="Instagram" title="Instagram">
+              <i aria-hidden="true" class="fa-brands fa-instagram social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://youtube.com/@your-username" target="_blank" rel="me noopener noreferrer" aria-label="YouTube" data-label="YouTube" title="YouTube">
+              <i aria-hidden="true" class="fa-brands fa-youtube social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://facebook.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Facebook" data-label="Facebook" title="Facebook">
+              <i aria-hidden="true" class="fa-brands fa-facebook-f social-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">
+        &copy; <span id="footer-year" class="copyright-year">2025</span> Michael Lee Piotrowski. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Flashcards Sidebar -->
+  <aside id="flashcards-sidebar" class="flashcards-sidebar" hidden aria-label="Flashcards from notes">
+    <div class="flashcards-header">
+      <h3>Flashcards</h3>
+      <button type="button" id="flashcards-close" class="flashcards-close" aria-label="Close flashcards">×</button>
+    </div>
+    <div id="flashcards-content" class="flashcards-content">
+      <p class="muted">Tag notes with <code>#flashcard</code> to see them here.</p>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

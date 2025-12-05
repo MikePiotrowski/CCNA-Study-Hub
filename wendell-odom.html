@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wendell Odom Resources | CCNA Study Hub</title>
+  <meta name="description" content="Comprehensive CCNA resources from Wendell Odom - books, videos, blog, and study tools">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <nav id="sticky-nav" class="sticky-nav" aria-label="Main navigation">
+    <div class="sticky-nav-inner">
+      <div class="sticky-brand">
+        <a href="home.html" class="sticky-nav-title-link">
+          <div class="sticky-nav-title">CCNA Study Hub</div>
+        </a>
+        <div class="sticky-nav-sub" aria-label="Profile and date">
+          <span class="brand-name">Michael Lee Piotrowski</span>
+          <span class="brand-sep" aria-hidden="true">•</span>
+          <time id="current-date" class="brand-date" datetime=""></time>
+        </div>
+      </div>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="sticky-nav-links" id="mobile-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="study-plan.html">Study Plan</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="wendell-odom.html" class="nav-active">Wendell Odom</a></li>
+        <li><a href="notes.html">Notes</a></li>
+      </ul>
+      <div class="sticky-nav-tools">
+        <button id="flashcards-toggle" class="flashcards-toggle" aria-expanded="false" title="Show flashcards">Flashcards</button>
+        <button id="pomodoro-toggle" class="pomodoro-toggle" aria-pressed="false" title="Pomodoro timer">
+          <i class="fas fa-clock" aria-hidden="true"></i>
+          <span id="pomodoro-display" class="pomodoro-display">25:00</span>
+        </button>
+        <button id="backend-toggle" class="flashcards-toggle" aria-pressed="true" title="Toggle backend search">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span id="backend-toggle-label">Backend: On</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Header / Hero -->
+    <header role="banner">
+      <h1><a href="home.html" class="header-title-link">CCNA Study Hub</a></h1>
+      <p class="tagline">Networking fundamentals, resources, and progress tracking for Cisco's CCNA exam.</p>
+    </header>
+
+    <!-- Wendell Odom CCNA Resources -->
+    <section id="wendell-odom" class="wendell-odom-section" aria-labelledby="wendell-title">
+      <h2 id="wendell-title">Wendell Odom Resources</h2>
+      <p class="muted">Curated resources from CCNA expert Wendell Odom — author of the Official Cert Guide series.</p>
+      
+      <div class="wendell-search">
+        <input type="search" id="wendell-search" placeholder="Search Wendell Odom resources..." aria-label="Search resources" />
+      </div>
+
+      <div class="wendell-resources-grid">
+        <!-- Official Books & Companion Site -->
+        <div class="wendell-card">
+          <div class="wendell-card-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Official Cert Guide</h3>
+          <p>The definitive CCNA study guide by Wendell Odom. Includes access to companion website with practice exams, flashcards, and study tools.</p>
+          <div class="wendell-links">
+            <a href="#" class="wendell-link" data-url="https://www.ciscopress.com/store/ccna-200-301-official-cert-guide-library-9781587147142" data-embed="false">
+              <i class="fas fa-shopping-cart"></i> Buy on Cisco Press
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.amazon.com/CCNA-200-301-Official-Cert-Guide/dp/1587147149" data-embed="false">
+              <i class="fab fa-amazon"></i> Buy on Amazon
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.pearsonitcertification.com/store/ccna-200-301-official-cert-guide-library-9781587147142" data-embed="false" data-requires-book="true">
+              <i class="fas fa-lock"></i> Pearson Companion Site <span class="badge-small">Requires Book</span>
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.ciscopress.com/promotions/premium-edition-ebook-and-practice-test-140111" data-embed="false">
+              <i class="fas fa-star"></i> Premium Edition Info
+            </a>
+          </div>
+        </div>
+
+        <!-- YouTube Channel -->
+        <div class="wendell-card">
+          <div class="wendell-card-icon">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <h3>YouTube Channel</h3>
+          <p>Free video tutorials, subnetting tips, CCNA exam strategies, and study guidance from Wendell Odom.</p>
+          <div class="wendell-links">
+            <a href="#" class="wendell-link" data-url="https://www.youtube.com/@wendellodom" data-embed="false">
+              <i class="fab fa-youtube"></i> Visit Channel
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.youtube.com/playlist?list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi" data-embed="false">
+              <i class="fas fa-list"></i> CCNA Playlist
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.youtube.com/c/CiscoPressPub" data-embed="false">
+              <i class="fas fa-video"></i> Cisco Press Channel
+            </a>
+          </div>
+          <div class="wendell-video">
+            <!-- Embedded Wendell Odom CCNA intro video -->
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/QVA6fGHcAtk" title="Wendell Odom CCNA Study Tips" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Blog & Articles -->
+        <div class="wendell-card">
+          <div class="wendell-card-icon">
+            <i class="fas fa-blog"></i>
+          </div>
+          <h3>Blog & Articles</h3>
+          <p>In-depth articles on networking concepts, subnetting techniques, study tips, and CCNA certification advice.</p>
+          <div class="wendell-links">
+            <a href="#" class="wendell-link" data-url="https://blog.certskills.com/" data-embed="true">
+              <i class="fas fa-blog"></i> CertSkills Blog
+            </a>
+            <a href="#" class="wendell-link" data-url="https://blog.certskills.com/ccna/" data-embed="true">
+              <i class="fas fa-certificate"></i> CCNA Articles
+            </a>
+            <a href="#" class="wendell-link" data-url="https://blog.certskills.com/subnet/" data-embed="true">
+              <i class="fas fa-network-wired"></i> Subnetting Guide
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.ciscopress.com/authors/bio/9b4e2f0b-6c35-4d5f-9e1f-3e3c7c0a8f1a" data-embed="false">
+              <i class="fas fa-user"></i> Author Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Social & Community -->
+        <div class="wendell-card">
+          <div class="wendell-card-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Community & Social</h3>
+          <p>Connect with Wendell Odom, follow his updates, and join the CCNA study community online.</p>
+          <div class="wendell-links">
+            <a href="#" class="wendell-link" data-url="https://twitter.com/wendellodom" data-embed="false">
+              <i class="fab fa-twitter"></i> Twitter / X
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.linkedin.com/in/wendellodom/" data-embed="false">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.facebook.com/CiscoPress" data-embed="false">
+              <i class="fab fa-facebook"></i> Cisco Press Facebook
+            </a>
+            <a href="#" class="wendell-link" data-url="https://learningnetwork.cisco.com/s/" data-embed="false">
+              <i class="fas fa-graduation-cap"></i> Cisco Learning Network
+            </a>
+          </div>
+          <div class="wendell-social-embed">
+            <!-- Twitter/X Timeline Embed -->
+            <a class="twitter-timeline" data-height="300" data-theme="dark" href="https://twitter.com/wendellodom?ref_src=twsrc%5Etfw">Latest from @wendellodom</a>
+          </div>
+        </div>
+
+        <!-- Learning Platforms & Podcasts -->
+        <div class="wendell-card">
+          <div class="wendell-card-icon">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <h3>Online Courses & Podcasts</h3>
+          <p>Additional learning resources featuring Wendell Odom's expertise and guest appearances.</p>
+          <div class="wendell-links">
+            <a href="#" class="wendell-link" data-url="https://www.linkedin.com/learning/search?keywords=wendell%20odom" data-embed="false">
+              <i class="fab fa-linkedin"></i> LinkedIn Learning
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.oreilly.com/search/?q=wendell%20odom" data-embed="false">
+              <i class="fas fa-book-reader"></i> O'Reilly Media
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.packetpushers.net/?s=wendell+odom" data-embed="false">
+              <i class="fas fa-podcast"></i> Packet Pushers Podcast
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.pearsonitcertification.com/podcasts/" data-embed="false">
+              <i class="fas fa-microphone"></i> Pearson IT Podcasts
+            </a>
+          </div>
+        </div>
+
+        <!-- Tools & Practice -->
+        <div class="wendell-card">
+          <div class="wendell-card-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Study Tools & Practice</h3>
+          <p>Interactive tools, practice exams, and additional study materials from Wendell's ecosystem.</p>
+          <div class="wendell-links">
+            <a href="#" class="wendell-link" data-url="https://www.pearsonitcertification.com/store/ccna-200-301-official-cert-guide-library-9781587147142" data-embed="false" data-requires-book="true">
+              <i class="fas fa-flask"></i> Practice Exams <span class="badge-small">Requires Book</span>
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.pearsonitcertification.com/store/ccna-200-301-official-cert-guide-library-9781587147142" data-embed="false" data-requires-book="true">
+              <i class="fas fa-cards-blank"></i> Flashcards <span class="badge-small">Requires Book</span>
+            </a>
+            <a href="#" class="wendell-link" data-url="https://subnettingquestions.com/" data-embed="true">
+              <i class="fas fa-calculator"></i> Subnetting Practice
+            </a>
+            <a href="#" class="wendell-link" data-url="https://www.cisco.com/c/en/us/training-events/training-certifications/exams/current-list/200-301-ccna.html" data-embed="false">
+              <i class="fas fa-clipboard-check"></i> Official CCNA Exam Info
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer outside container for full-width -->
+  <footer>
+    <div class="footer-inner">
+      <nav class="socials" aria-label="Social media">
+        <ul class="social-links">
+          <li>
+            <a class="social-link" href="https://linkedin.com/in/your-username" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn" data-label="LinkedIn" title="LinkedIn">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://github.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="GitHub" data-label="GitHub" title="GitHub">
+              <i aria-hidden="true" class="fa-brands fa-github social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://instagram.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Instagram" data-label="Instagram" title="Instagram">
+              <i aria-hidden="true" class="fa-brands fa-instagram social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://youtube.com/@your-username" target="_blank" rel="me noopener noreferrer" aria-label="YouTube" data-label="YouTube" title="YouTube">
+              <i aria-hidden="true" class="fa-brands fa-youtube social-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://facebook.com/your-username" target="_blank" rel="me noopener noreferrer" aria-label="Facebook" data-label="Facebook" title="Facebook">
+              <i aria-hidden="true" class="fa-brands fa-facebook-f social-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">
+        &copy; <span id="footer-year" class="copyright-year">2025</span> Michael Lee Piotrowski. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Iframe Modal for External Links -->
+  <div id="iframe-modal" class="iframe-modal" role="dialog" aria-modal="true" aria-labelledby="iframe-modal-title" hidden>
+    <div class="iframe-modal-content">
+      <div class="iframe-modal-header">
+        <h3 id="iframe-modal-title">Loading Resource...</h3>
+        <button type="button" class="iframe-modal-close" aria-label="Close">×</button>
+      </div>
+      <div class="iframe-modal-body">
+        <iframe id="external-iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" allowfullscreen></iframe>
+        <div id="iframe-fallback" class="iframe-fallback" hidden>
+          <div class="iframe-fallback-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h4>Cannot embed this website</h4>
+            <p>This site doesn't allow embedding for security reasons.</p>
+            <button type="button" id="open-external" class="btn-primary">
+              <i class="fas fa-external-link-alt"></i> Open in New Tab
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flashcards Sidebar -->
+  <aside id="flashcards-sidebar" class="flashcards-sidebar" hidden aria-label="Flashcards from notes">
+    <div class="flashcards-header">
+      <h3>Flashcards</h3>
+      <button type="button" id="flashcards-close" class="flashcards-close" aria-label="Close flashcards">×</button>
+    </div>
+    <div id="flashcards-content" class="flashcards-content">
+      <p class="muted">Tag notes with <code>#flashcard</code> to see them here.</p>
+    </div>
+  </aside>
+
+  <!-- Toast notification container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <!-- Twitter Widget Script -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
