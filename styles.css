@@ -1421,6 +1421,38 @@ body.theme-teal {
     color: var(--text-secondary);
 }
 
+.notes-search-btn {
+    padding: 0.55rem 1rem !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    color: var(--text-color) !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    white-space: nowrap !important;
+}
+
+.notes-search-btn:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.notes-search-btn:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+.notes-search-btn:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
+
 .notes-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Fixed 2-column layout on desktop */
